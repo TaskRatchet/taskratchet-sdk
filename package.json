@@ -3,9 +3,6 @@
   "version": "0.0.0",
   "type": "module",
   "types": "./dist/taskratchet-sdk.d.ts",
-  "files": [
-    "dist"
-  ],
   "main": "./dist/taskratchet-sdk.umd.cjs",
   "module": "./dist/taskratchet-sdk.js",
   "exports": {
