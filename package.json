@@ -1,0 +1,34 @@
+{
+  "name": "taskratchet-sdk",
+  "version": "0.0.0",
+  "type": "module",
+  "types": "./dist/taskratchet-sdk.d.ts",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/taskratchet-sdk.umd.cjs",
+  "module": "./dist/taskratchet-sdk.js",
+  "exports": {
+    ".": {
+      "import": "./dist/taskratchet-sdk.js",
+      "require": "./dist/taskratchet-sdk.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "prepare": "pnpm run build"
+  },
+  "dependencies": {
+    "firebase": "^10.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.4.0",
+    "vite-plugin-dts": "^3.2.0",
+    "vitest": "^0.33.0",
+    "vitest-fetch-mock": "^0.2.1"
+  }
+}
