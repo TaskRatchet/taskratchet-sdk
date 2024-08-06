@@ -1,6 +1,6 @@
 {
   "name": "@taskratchet/sdk",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "types": "./dist/taskratchet-sdk.d.ts",
   "main": "./dist/taskratchet-sdk.umd.cjs",
