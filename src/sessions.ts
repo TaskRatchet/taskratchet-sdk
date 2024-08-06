@@ -39,11 +39,13 @@ export function logout(): void {
   window.localStorage.removeItem("token");
   window.localStorage.removeItem("firebase_token");
 
-  const auth = getAuth();
-  signOut(auth).catch((e) => {
+  try {
+    const auth = getAuth();
+    signOut(auth);
+  } catch (e) {
     // TODO find better logging
     console.log(e);
-  });
+  }
 
   publishSession();
 }
