@@ -25,6 +25,7 @@ export default async function fetch1(
     method: method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
+      ...(data ? { "Content-Type": "application/json" } : {}),
       "X-Taskratchet-Token": token || "",
     },
   });
