@@ -25,3 +25,5 @@ pnpm publish --access public
 - Handle pagination when using fetch2
 - Update fetch2 to send API token using ApiKey-v2 header
 - Replace window.localStorage with something that will work in the browser and in Node
+- Create CI workflow
+- Add master branch protections
