@@ -1,4 +1,5 @@
 import { logout } from "./sessions";
+import { trackRequest } from "./apiActivity";
 import { API2_BASE } from "./constants";
 
 const _trim = (s: string, c: string) => {
@@ -21,7 +22,9 @@ export default async function fetch2(
   }
 
   // noinspection SpellCheckingInspection
-  const response = await fetch(API2_BASE + route_, {
+  const endTracking = trackRequest();
+  try {
+    const response = await fetch(API2_BASE + route_, {
     method: method,
     body: data ? JSON.stringify(data) : undefined,
     headers: {
@@ -30,9 +33,12 @@ export default async function fetch2(
     },
   });
 
-  if (response.status === 403) {
-    logout();
-  }
+    if (response.status === 403) {
+      logout();
+    }
 
-  return response;
+    return response;
+  } finally {
+    endTracking();
+  }
 }
