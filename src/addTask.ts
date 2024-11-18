@@ -10,7 +10,7 @@ type Input = {
 export async function addTask(input: Input): Promise<Response> {
   const response = await fetch1("me/tasks", true, "POST", input);
 
-  if (!response.ok) {
+  if (!response.success) {
     throw new Error("Failed to add task");
   }
 

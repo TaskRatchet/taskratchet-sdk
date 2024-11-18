@@ -11,9 +11,8 @@ export async function editTask(
     cents,
   });
 
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(error);
+  if (!response.success) {
+    throw new Error(JSON.stringify(response.error));
   }
 
   return response;

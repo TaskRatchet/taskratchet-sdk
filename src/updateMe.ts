@@ -11,7 +11,7 @@ export interface MeInput {
   checkout_session_id?: string | null;
 }
 
-export async function updateMe(input: MeInput): Promise<Response> {
+export async function updateMe(input: MeInput): Promise<unknown> {
   const payload = pipeMap(input as Record<string, unknown>, [
     ["beeminder_token", "integrations.beeminder.token"],
     ["beeminder_user", "integrations.beeminder.user"],
@@ -24,9 +24,9 @@ export async function updateMe(input: MeInput): Promise<Response> {
 
   const response = await fetch1("me", true, "PUT", payload);
 
-  if (!response.ok) {
+  if (!response.success) {
     throw new Error("Failed to update me");
   }
 
-  return response;
+  return response.data;
 }
