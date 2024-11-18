@@ -12,8 +12,7 @@ npm install @taskratchet/sdk
 
 ```sh
 # Update version in package.json, then:
-npm adduser
-pnpm publish --access public
+npm run publish
 ```
 
 ## Todo
