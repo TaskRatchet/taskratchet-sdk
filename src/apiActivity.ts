@@ -5,6 +5,7 @@ export function subscribeToApiActivity(
   callback: (isActive: boolean) => void
 ): void {
   activitySubs.push(callback);
+  publishActivityState();
 }
 
 export function unsubscribeFromApiActivity(
