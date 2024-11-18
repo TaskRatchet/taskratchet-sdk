@@ -12,7 +12,7 @@ npm install @taskratchet/sdk
 
 ```sh
 # Update version in package.json, then:
-npm run publish
+npm publish
 ```
 
 ## Todo
