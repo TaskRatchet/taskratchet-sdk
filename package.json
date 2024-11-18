@@ -22,9 +22,11 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "prepublish": "npm run test"
   },
   "dependencies": {
+    "@hyper-fetch/core": "^5.7.5",
     "firebase": "^10.0.0"
   },
   "devDependencies": {
