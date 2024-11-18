@@ -32,10 +32,10 @@
   },
   "devDependencies": {
     "jsdom": "^25.0.1",
+    "msw": "^2.6.5",
     "typescript": "^5.0.2",
     "vite": "^5.4.11",
     "vite-plugin-dts": "^4.3.0",
-    "vitest": "^2.1.5",
-    "vitest-fetch-mock": "^0.4.2"
+    "vitest": "^2.1.5"
   }
 }

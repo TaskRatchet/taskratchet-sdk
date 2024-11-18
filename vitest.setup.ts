@@ -1,9 +1,11 @@
-import createFetchMock from "vitest-fetch-mock";
-import { vi } from "vitest";
+import { vi, beforeAll, afterEach, afterAll } from "vitest";
+import { setupServer } from 'msw/node';
 
-const fetchMocker = createFetchMock(vi);
+export const server = setupServer();
 
-fetchMocker.enableMocks();
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
 vi.mock("firebase/app");
 vi.mock("firebase/auth");

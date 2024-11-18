@@ -1,24 +1,31 @@
+import { API1_BASE } from "./constants";
 import fetch1 from "./fetch1";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
+import { http, HttpResponse } from "msw";
 
 describe("fetch1", () => {
   it("uses localStorage token", async () => {
-    fetchMock.mockResponse(JSON.stringify({}));
+    let headers: any;
+
+    http.get(`${API1_BASE}/route`, ({ request }) => {
+      headers = request.headers;
+      return HttpResponse.json({});
+    });
 
     const token = "token";
 
     global.localStorage.setItem("token", token);
 
-    const url = "https://example.com";
-    await fetch1(url);
+    await fetch1("/route");
 
-    expect(fetch).toHaveBeenCalledWith(
-      expect.anything(),
-      expect.objectContaining({
-        headers: {
-          "X-Taskratchet-Token": token,
-        },
-      })
-    );
+    vi.waitFor(() => {
+      expect(headers).toEqual(
+        expect.objectContaining({
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+      );
+    });
   });
 });

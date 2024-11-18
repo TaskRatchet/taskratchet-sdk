@@ -1,24 +1,31 @@
-import fetch2 from './fetch2';
-import { describe, it, expect } from 'vitest';
+import fetch2 from "./fetch2";
+import { describe, it, expect, vi } from "vitest";
+import { http, HttpResponse } from "msw";
+import { API2_BASE } from "./constants";
 
-describe('fetch2', () => {
-	it('uses localStorage token', async () => {
-		fetchMock.mockResponse(JSON.stringify({}));
+describe("fetch2", () => {
+  it("uses localStorage token", async () => {
+    let headers: any;
 
-		const token = 'token';
+    http.get(`${API2_BASE}/route`, ({ request }) => {
+      headers = request.headers;
+      return HttpResponse.json({});
+    });
 
-		global.localStorage.setItem('firebase_token', token);
+    const token = "token";
 
-		const url = 'https://example.com';
-		await fetch2(url);
+    global.localStorage.setItem("firebase_token", token);
 
-		expect(fetch).toHaveBeenCalledWith(
-			expect.anything(),
-			expect.objectContaining({
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
-		);
-	});
+    await fetch2("/route");
+
+    vi.waitFor(() => {
+      expect(headers).toEqual(
+        expect.objectContaining({
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+      );
+    });
+  });
 });
