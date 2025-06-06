@@ -1,12 +1,23 @@
-import fetch1 from "./fetch1";
+import fetch2 from "./fetch2";
+
+interface Task {
+  id: string;
+  task: string;
+  due: number;
+  cents: number;
+  complete: boolean;
+  status: "pending" | "complete" | "expired";
+  chargeStatus?: "notified" | "authorized" | "captured";
+  contested?: boolean;
+}
 
 // Requires that user be authenticated.
 export async function editTask(
   id: string,
-  due: string,
-  cents: number
-): Promise<Response> {
-  const response = await fetch1(`me/tasks/${id}`, true, "PUT", {
+  due: number,
+  cents: number,
+): Promise<Task> {
+  const response = await fetch2(`me/tasks/${id}`, true, "PUT", {
     due,
     cents,
   });
@@ -16,5 +27,5 @@ export async function editTask(
     throw new Error(error);
   }
 
-  return response;
+  return response.json();
 }
