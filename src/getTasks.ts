@@ -1,7 +1,20 @@
-import fetch1 from './fetch1';
+import fetch2 from "./fetch2";
 
-export async function getTasks(): Promise<unknown> {
-	const response = await fetch1('me/tasks', true);
+interface Task {
+  id: string;
+  task: string;
+  due: number;
+  cents: number;
+  complete: boolean;
+  status: "pending" | "complete" | "expired";
+  chargeStatus?: "notified" | "authorized" | "captured";
+  contested?: boolean;
+}
 
-	return response.json();
+export async function getTasks({ page = 0 }: { page?: number } = {}): Promise<
+  Task[]
+> {
+  const response = await fetch2(`me/tasks?page=${page}`, true);
+
+  return response.json();
 }
