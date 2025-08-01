@@ -13,4 +13,8 @@ export * from "./sessions";
 export * from "./updateMe";
 export * from "./updatePassword";
 export * from "./updateTask";
-export { subscribeToApiActivity, unsubscribeFromApiActivity } from "./apiActivity";
+export {
+  subscribeToApiActivity,
+  unsubscribeFromApiActivity,
+} from "./apiActivity";
+export * from "./auth";
