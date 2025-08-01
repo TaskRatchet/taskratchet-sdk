@@ -1,6 +1,7 @@
 import { logout } from "./sessions";
 import { trackRequest } from "./apiActivity";
 import { API2_BASE } from "./constants";
+import { getAuthToken } from "./auth";
 
 const _trim = (s: string, c: string) => {
   if (c === "]") c = "\\]";
@@ -12,9 +13,9 @@ export default async function fetch2(
   route: string,
   protected_ = false,
   method = "GET",
-  data: unknown = null
+  data: unknown = null,
 ): Promise<Response> {
-  const token = window.localStorage.getItem("firebase_token") || "";
+  const token = getAuthToken() || "";
   const route_ = _trim(route, "/");
 
   if (protected_ && !token) {
@@ -25,13 +26,13 @@ export default async function fetch2(
   const endTracking = trackRequest();
   try {
     const response = await fetch(API2_BASE + route_, {
-    method: method,
-    body: data ? JSON.stringify(data) : undefined,
-    headers: {
-      ...(data ? { "Content-Type": "application/json" } : {}),
-      Authorization: `Bearer ${token}`,
-    },
-  });
+      method: method,
+      body: data ? JSON.stringify(data) : undefined,
+      headers: {
+        ...(data ? { "Content-Type": "application/json" } : {}),
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (response.status === 403) {
       logout();
