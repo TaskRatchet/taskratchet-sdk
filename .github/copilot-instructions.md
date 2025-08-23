@@ -122,16 +122,21 @@ describe('functionName', () => {
 
 ## Development Workflow
 
+### Package Manager
+- **Use pnpm only** - This project uses pnpm as the package manager, not npm
+- Never use `npm install` or other npm commands
+- Always use `pnpm install`, `pnpm add`, `pnpm remove`, etc.
+
 ### Building
 ```bash
-npm run build    # Build the library for production
-npm run dev      # Development mode with watch
+pnpm run build    # Build the library for production
+pnpm run dev      # Development mode with watch
 ```
 
 ### Testing
 ```bash
-npm test         # Run all tests
-npm run test     # Same as above
+pnpm test         # Run all tests
+pnpm run test     # Same as above
 ```
 
 ### Code Quality
