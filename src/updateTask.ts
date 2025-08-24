@@ -1,4 +1,4 @@
-import fetch1 from "./fetch1";
+import fetch2 from "./fetch2";
 
 export interface TaskInput {
   complete?: boolean;
@@ -10,5 +10,5 @@ export async function updateTask(
   taskId: string,
   data: TaskInput
 ): Promise<Response> {
-  return fetch1(`me/tasks/${taskId}`, true, "PUT", data);
+  return fetch2(`me/tasks/${taskId}`, true, "PUT", data);
 }

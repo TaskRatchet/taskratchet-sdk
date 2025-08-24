@@ -1,5 +1,4 @@
-import pipeMap from "./pipeMap";
-import fetch1 from "./fetch1";
+import fetch2 from "./fetch2";
 
 export interface MeInput {
   name?: string | null;
@@ -12,17 +11,8 @@ export interface MeInput {
 }
 
 export async function updateMe(input: MeInput): Promise<Response> {
-  const payload = pipeMap(input as Record<string, unknown>, [
-    ["beeminder_token", "integrations.beeminder.token"],
-    ["beeminder_user", "integrations.beeminder.user"],
-    ["beeminder_goal_new_tasks", "integrations.beeminder.goal_new_tasks"],
-    ["email", "email"],
-    ["name", "name"],
-    ["timezone", "timezone"],
-    ["checkout_session_id", "checkout_session_id"],
-  ]);
 
-  const response = await fetch1("me", true, "PUT", payload);
+  const response = await fetch2("me", true, "PUT", input);
 
   if (!response.ok) {
     throw new Error("Failed to update me");
