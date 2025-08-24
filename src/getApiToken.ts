@@ -1,6 +1,6 @@
-import fetch1 from "./fetch1";
+import fetch2 from "./fetch2";
 
 export async function getApiToken() {
-  const response = await fetch1("me/token", true, "GET");
+  const response = await fetch2("me/token", true, "POST");
   return response?.text();
 }
