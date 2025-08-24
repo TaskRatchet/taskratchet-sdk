@@ -1,4 +1,4 @@
-import fetch1 from "./fetch1";
+import fetch2 from "./fetch2";
 
 export interface MeInput {
   name?: string | null;
@@ -12,7 +12,7 @@ export interface MeInput {
 
 export async function updateMe(input: MeInput): Promise<Response> {
 
-  const response = await fetch1("me", true, "PUT", input);
+  const response = await fetch2("me", true, "PUT", input);
 
   if (!response.ok) {
     throw new Error("Failed to update me");
