@@ -22,7 +22,7 @@ async function main() {
 
 ### Publish to NPM
 
-```sh
-# Update version in package.json, then:
-npm publish
-```
+- [ ] Update version in package.json
+- [ ] Update changelog
+- [ ] Run build script: `pnpm run build`
+- [ ] Publish to NPM: `npm publish`
