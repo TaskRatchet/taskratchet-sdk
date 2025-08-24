@@ -1,5 +1,7 @@
 # taskratchet-sdk
 
+[Changelog](CHANGELOG.md)
+
 ## Installation
 
 ```sh
