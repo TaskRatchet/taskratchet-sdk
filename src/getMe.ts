@@ -12,7 +12,6 @@ type User = {
     };
   };
   has_stripe_customer: boolean;
-  api2_token?: string;
 }
 
 export async function getMe(): Promise<User> {
