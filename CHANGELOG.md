@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed getApiToken to resetApiToken
 - Updated updateMe to use API v2
 - Updated updateTask to use API v2
+- Exported User type
 
 ### Removed
 

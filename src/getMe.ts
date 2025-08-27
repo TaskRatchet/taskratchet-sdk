@@ -1,6 +1,6 @@
 import fetch2 from "./fetch2";
 
-type User = {
+export type User = {
   id: string;
   name?: string;
   email: string;
