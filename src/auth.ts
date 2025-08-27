@@ -5,5 +5,5 @@ export function setAuthToken(token: string | null): void {
 }
 
 export function getAuthToken(): string | null {
-  return authToken || window.localStorage.getItem("firebase_token");
+  return authToken;
 }
