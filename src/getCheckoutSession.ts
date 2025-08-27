@@ -4,8 +4,20 @@ export interface CheckoutSession {
   id: string;
 }
 
-export async function getCheckoutSession(): Promise<CheckoutSession> {
-  const response = await fetch2("payments/checkout/session", false, "POST");
+export interface CheckoutSessionOptions {
+  success_url: string;
+  cancel_url: string;
+}
+
+export async function getCheckoutSession(
+  options: CheckoutSessionOptions
+): Promise<CheckoutSession> {
+  const response = await fetch2(
+    "payments/checkout/session",
+    false,
+    "POST",
+    options
+  );
 
   return response.json() as Promise<CheckoutSession>;
 }
