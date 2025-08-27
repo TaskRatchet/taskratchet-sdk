@@ -1,6 +1,6 @@
 export * from "./addTask";
 export * from "./editTask";
-export * from "./getApiToken";
+export * from "./resetApiToken";
 export * from "./getCheckoutSession";
 export * from "./getMe";
 export * from "./getTasks";

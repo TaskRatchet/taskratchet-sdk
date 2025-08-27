@@ -1,5 +1,7 @@
 # taskratchet-sdk
 
+[Changelog](CHANGELOG.md)
+
 ## Installation
 
 ```sh
@@ -22,19 +24,7 @@ async function main() {
 
 ### Publish to NPM
 
-```sh
-# Update version in package.json, then:
-npm publish
-```
-
-## Todo
-
-- Rename getCheckoutSession to createCheckoutSession
-- Rename getApiToken to createApiToken
-- Switch from fetch1 to fetch2 where possible
-- Add better types for all functions
-- Handle pagination when using fetch2
-- Update fetch2 to send API token using ApiKey-v2 header
-- Replace window.localStorage with something that will work in the browser and in Node
-- Create CI workflow
-- Add master branch protections
+- [ ] Update version in package.json
+- [ ] Update changelog
+- [ ] Run build script: `pnpm run build`
+- [ ] Publish to NPM: `npm publish`
