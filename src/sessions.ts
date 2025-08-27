@@ -37,7 +37,6 @@ export function publishSession(): void {
 export function logout(): void {
   window.localStorage.removeItem("email");
   window.localStorage.removeItem("token");
-  window.localStorage.removeItem("firebase_token");
 
   try {
     const auth = getAuth();
