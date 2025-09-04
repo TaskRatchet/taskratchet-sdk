@@ -11,7 +11,6 @@ This is the **TaskRatchet SDK**, a TypeScript/JavaScript library that provides a
 - User profile management
 - Payment/checkout session handling
 - Integration with external services (e.g., Beeminder)
-- Firebase authentication integration
 
 ## Project Structure
 
@@ -123,13 +122,6 @@ describe("functionName", () => {
 - Gradually migrate to fetch2 when possible
 - Uses older authentication patterns
 
-## Session Management
-
-- Session data is stored in `window.localStorage`
-- Key session fields: `email`, `token`
-- Use `publishSession()` to notify subscribers of session changes
-- Firebase authentication runs parallel to API authentication
-
 ## Development Workflow
 
 ### Package Manager
@@ -182,7 +174,6 @@ pnpm run test     # Same as above
 
 The project uses Vite-style environment variables:
 
-- `VITE_FIREBASE_*` for Firebase configuration
 - `VITE_API1_URL` for legacy API base URL
 - `VITE_API2_URL` for modern API base URL
 
