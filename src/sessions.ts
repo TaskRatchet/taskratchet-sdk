@@ -1,5 +1,3 @@
-import { getAuth, signOut } from "firebase/auth";
-
 export type Session = {
   token: string;
   email: string;
@@ -37,14 +35,6 @@ export function publishSession(): void {
 export function logout(): void {
   window.localStorage.removeItem("email");
   window.localStorage.removeItem("token");
-
-  try {
-    const auth = getAuth();
-    signOut(auth);
-  } catch (e) {
-    // TODO find better logging
-    console.log(e);
-  }
 
   publishSession();
 }
