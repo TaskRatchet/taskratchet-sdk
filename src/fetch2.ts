@@ -13,9 +13,9 @@ export default async function fetch2(
   route: string,
   protected_ = false,
   method = "GET",
-  data: unknown = null,
+  data: unknown = null
 ): Promise<Response> {
-  const token = getAuthToken() || "";
+  const token: string = (await getAuthToken()) || "";
   const route_ = _trim(route, "/");
 
   if (protected_ && !token) {

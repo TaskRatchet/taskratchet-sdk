@@ -1,9 +1,11 @@
-let authToken: string | null = null;
+type AuthTokenGetter = () => string | null | Promise<string | null>;
 
-export function setAuthToken(token: string | null): void {
-  authToken = token;
+let getter: AuthTokenGetter = () => null;
+
+export function setAuthTokenGetter(fn: AuthTokenGetter): void {
+  getter = fn;
 }
 
-export function getAuthToken(): string | null {
-  return authToken;
+export async function getAuthToken(): Promise<string | null> {
+  return getter();
 }
